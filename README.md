@@ -56,6 +56,7 @@ select,textarea{width:100%;font:inherit;padding:.5rem;border:2px solid #b7c9e2;b
 .tag{display:inline-block;background:var(--v);color:var(--vt);border-radius:20px;padding:.1rem .7rem;font-size:.85rem;font-weight:700}
 footer{text-align:center;padding:1.5rem;color:#455}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.hero h1{border:0;padding:0;color:#fff}header,.hero{margin:0}nav a,.btn{border-bottom:0}h2{border:0}
 </style>
 </head>
 <body>
@@ -185,7 +186,8 @@ const n=F.filter((f,i)=>S.a["f"+i]!=null).length;
 if(n==F.length){const ok=F.filter((f,i)=>S.a["f"+i]==f[2]),rev=[...new Set(F.filter((f,i)=>S.a["f"+i]!=f[2]).map(f=>f[3]))];
 $("fs").innerHTML=`<div class="fb ok"><b>Acertaste ${ok.length} de ${F.length}.</b> `+(rev.length?`Qué reforzar: ${rev.join(", ")}. Vuelve a esos módulos y cambia tus respuestas cuando quieras.`:"¡Excelente! Dominas los conceptos. Ahora aplícalos en tus propios proyectos.")+"</div>"}else $("fs").textContent="";}
 /* ===== INICIO ===== */
-$("nv").innerHTML=D.map((m,i)=>`<a href="#m${i+1}">${i+1}. ${m.t.split(/[¿?:,]/).filter(Boolean)[0].slice(0,18)}</a>`).join("")+'<a href="#fin">Final</a>';
+const NAV=["Por qué evaluar","Para qué evaluamos","Cómo aprendemos","Evaluación en línea","Instrumentos","Inclusión","Práctica"];
+$("nv").innerHTML=D.map((m,i)=>`<a href="#m${i+1}">${i+1}. ${NAV[i]}</a>`).join("")+'<a href="#fin">Final</a>';
 $("gr").innerHTML=D.map((m,i)=>`<a class="mc" href="#m${i+1}"><span>${m.i}</span><b>Módulo ${i+1}</b><small>${m.t}</small><small class="tag" id="g${i}"></small></a>`).join("");
 const VID=`<section class="m" id="video" aria-labelledby="vt"><h2 id="vt">🎬 Pausa para ver</h2><p class="intro">Mira este video y piensa: ¿qué relación ves con lo que aprendiste hasta ahora sobre evaluar en línea?</p><div style="position:relative;padding-top:56.25%"><iframe style="position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:12px" src="https://www.youtube-nocookie.com/embed/WyAmNns1CHA" title="Video de la plataforma Evaluar para Aprender" allow="accelerometer;encrypted-media;gyroscope;picture-in-picture" allowfullscreen loading="lazy"></iframe></div><p><a href="https://youtu.be/WyAmNns1CHA" target="_blank" rel="noopener">Abrir el video en YouTube</a></p></section>`;
 $("mods").innerHTML=D.map((m,i)=>`<section class="m" id="m${i+1}" aria-labelledby="h${i}"><h2 id="h${i}">${m.i} Módulo ${i+1}. ${m.t}</h2><p class="intro">${m.intro}</p><h3>Explora</h3><div class="${m.tl?"tl":""}">${m.cards.map(c=>`<details><summary>${c[0]}</summary><p>${c[1]}</p></details>`).join("")}</div><h3>Practica</h3>${m.acts.map(a=>`<div class="act" id="a-${a.k}"></div>`).join("")}</section>`+(i==3?VID:"")).join("");
